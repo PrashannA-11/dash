@@ -44,38 +44,42 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCNTCQywyiwb2m9ZFr0arWT0qO4_TjxDzk',
-    appId: '1:1077579732943:web:327a0dfc187e3bcbc124ba',
-    messagingSenderId: '1077579732943',
-    projectId: 'yatra-ad',
-    authDomain: 'yatra-ad.firebaseapp.com',
-    storageBucket: 'yatra-ad.appspot.com',
-    measurementId: 'G-BN5BELHEH4',
+    apiKey: 'AIzaSyCeDRogt1abXVf_aWmKLwTZhW_HexEH1h8',
+    appId: '1:489357695265:web:3a9b5dac6f67e00a69c660',
+    messagingSenderId: '489357695265',
+    projectId: 'yat-ra',
+    authDomain: 'yat-ra.firebaseapp.com',
+    storageBucket: 'yat-ra.appspot.com',
+    measurementId: 'G-JTNHY8R7K6',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBi2GNwZ3ROfiyx20Kz-oscOvN2RMu677c',
-    appId: '1:1077579732943:android:15edcc5ad6ea5864c124ba',
-    messagingSenderId: '1077579732943',
-    projectId: 'yatra-ad',
-    storageBucket: 'yatra-ad.appspot.com',
+    apiKey: 'AIzaSyBe2hAFh9Y_gjaMgjHZnzuW-yh4BZXLsaA',
+    appId: '1:489357695265:android:bd740e1d22003bd169c660',
+    messagingSenderId: '489357695265',
+    projectId: 'yat-ra',
+    storageBucket: 'yat-ra.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBQdnHljpk0O_riX8ZQJnZWcJ-2mQjUTkI',
-    appId: '1:1077579732943:ios:33c5d06809c90119c124ba',
-    messagingSenderId: '1077579732943',
-    projectId: 'yatra-ad',
-    storageBucket: 'yatra-ad.appspot.com',
+    apiKey: 'AIzaSyBmLlXu6yk_AOgPTEkhmH11ttJKthouSi4',
+    appId: '1:489357695265:ios:a29aaaee634d66d569c660',
+    messagingSenderId: '489357695265',
+    projectId: 'yat-ra',
+    storageBucket: 'yat-ra.appspot.com',
+    androidClientId: '489357695265-31pqrr607abkmfncte6a3ineoh2l6ire.apps.googleusercontent.com',
+    iosClientId: '489357695265-0p12j0qj6mfq5a0dh5pos1t9ed9grs2m.apps.googleusercontent.com',
     iosBundleId: 'com.example.dash',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBQdnHljpk0O_riX8ZQJnZWcJ-2mQjUTkI',
-    appId: '1:1077579732943:ios:5d566763122aa780c124ba',
-    messagingSenderId: '1077579732943',
-    projectId: 'yatra-ad',
-    storageBucket: 'yatra-ad.appspot.com',
+    apiKey: 'AIzaSyBmLlXu6yk_AOgPTEkhmH11ttJKthouSi4',
+    appId: '1:489357695265:ios:28de65a07d3bd4e769c660',
+    messagingSenderId: '489357695265',
+    projectId: 'yat-ra',
+    storageBucket: 'yat-ra.appspot.com',
+    androidClientId: '489357695265-31pqrr607abkmfncte6a3ineoh2l6ire.apps.googleusercontent.com',
+    iosClientId: '489357695265-tq6ek1bkajj45apoi1kldgotgml8jd6i.apps.googleusercontent.com',
     iosBundleId: 'com.example.dash.RunnerTests',
   );
 }

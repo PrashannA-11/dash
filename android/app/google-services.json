@@ -1,26 +1,87 @@
 {
   "project_info": {
-    "project_number": "1077579732943",
-    "project_id": "yatra-ad",
-    "storage_bucket": "yatra-ad.appspot.com"
+    "project_number": "489357695265",
+    "project_id": "yat-ra",
+    "storage_bucket": "yat-ra.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1077579732943:android:15edcc5ad6ea5864c124ba",
+        "mobilesdk_app_id": "1:489357695265:android:bd740e1d22003bd169c660",
         "android_client_info": {
           "package_name": "com.example.dash"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "489357695265-ac3r1dg49e91kinm0p2v6fscnpt2v6b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
-          "current_key": "AIzaSyBi2GNwZ3ROfiyx20Kz-oscOvN2RMu677c"
+          "current_key": "AIzaSyBe2hAFh9Y_gjaMgjHZnzuW-yh4BZXLsaA"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489357695265-2rps7ph86au1jf0f4e1gt969hpbtq3e0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "489357695265-81l578hklvi461puh9q69sdure8f7gon.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yatra1.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:489357695265:android:d42d4385a457108c69c660",
+        "android_client_info": {
+          "package_name": "com.example.yatra1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "489357695265-31pqrr607abkmfncte6a3ineoh2l6ire.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yatra1",
+            "certificate_hash": "c3313d0dd70cfca5ae6e4b00a8b0ebe68d9bf0ed"
+          }
+        },
+        {
+          "client_id": "489357695265-ac3r1dg49e91kinm0p2v6fscnpt2v6b7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe2hAFh9Y_gjaMgjHZnzuW-yh4BZXLsaA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "489357695265-2rps7ph86au1jf0f4e1gt969hpbtq3e0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "489357695265-81l578hklvi461puh9q69sdure8f7gon.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.yatra1.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

@@ -1,12 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 
 class RightSideWidget extends StatelessWidget {
+  const RightSideWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       width: 300,
       height: 900,
       decoration: BoxDecoration(
@@ -15,7 +15,7 @@ class RightSideWidget extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(.2),
             blurRadius: 2,
-            offset: Offset(0.5, 0.0),
+            offset: const Offset(0.5, 0.0),
             spreadRadius: 2,
           ),
         ],
@@ -41,11 +41,11 @@ class RightSideWidget extends StatelessWidget {
             height: 40,
             decoration: BoxDecoration(
               color: Colors.grey[200],
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(40),
               ),
             ),
-            child: TextField(
+            child: const TextField(
               decoration: InputDecoration(
                 border: InputBorder.none,
                 prefixIcon: Icon(Icons.search),
@@ -57,11 +57,11 @@ class RightSideWidget extends StatelessWidget {
             height: 40,
             decoration: BoxDecoration(
               color: Colors.grey[200],
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(40),
               ),
             ),
-            child: Icon(
+            child: const Icon(
               Icons.notifications_none,
               color: Colors.black,
             ),
@@ -73,12 +73,12 @@ class RightSideWidget extends StatelessWidget {
 
   Widget _profileWidget() {
     return Container(
-      margin: EdgeInsets.only(top: 50),
+      margin: const EdgeInsets.only(top: 50),
       child: Column(
         children: [
           Row(
             children: [
-              Container(
+              const SizedBox(
                 width: 190,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,14 +105,14 @@ class RightSideWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: 80,
                 height: 80,
                 child: Image.asset("assets/profile.png"),
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -121,14 +121,14 @@ class RightSideWidget extends StatelessWidget {
               Container(
                 width: 190,
                 height: 35,
-                padding: EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(30),
                   ),
                 ),
-                child: TextField(
+                child: const TextField(
                   decoration: InputDecoration(
                     hintText: "Url",
                     hintStyle: TextStyle(fontSize: 16),
@@ -142,15 +142,15 @@ class RightSideWidget extends StatelessWidget {
               ),
               Container(
                 height: 35,
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
                   color: Colors.grey[200],
-                  borderRadius: BorderRadius.all(
+                  borderRadius: const BorderRadius.all(
                     Radius.circular(30),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   "Edit Link",
                   style: TextStyle(fontSize: 12),
                 ),
@@ -164,9 +164,9 @@ class RightSideWidget extends StatelessWidget {
 
   Widget _upgradeToProWidget() {
     return Container(
-      margin: EdgeInsets.only(top: 40),
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 20),
-      decoration: BoxDecoration(
+      margin: const EdgeInsets.only(top: 40),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+      decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(
             Radius.circular(8),
           ),
@@ -174,7 +174,7 @@ class RightSideWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -190,7 +190,7 @@ class RightSideWidget extends StatelessWidget {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             height: 50,
             width: 50,
             child: Image.asset("assets/pro.png"),
@@ -202,11 +202,11 @@ class RightSideWidget extends StatelessWidget {
 
   Widget _reminderWidget() {
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -231,7 +231,7 @@ class RightSideWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           _singleRowButton(
@@ -240,14 +240,14 @@ class RightSideWidget extends StatelessWidget {
               icon: Icons.announcement_outlined,
               iconColor: const Color.fromARGB(255, 194, 47, 45),
               boxColor: const Color.fromARGB(255, 229, 228, 228)),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           _singleRowButton(
               title: "New Message",
               description: "Lorem Ipsum is simply dummy text",
               icon: Icons.announcement_outlined,
               iconColor: const Color.fromARGB(255, 239, 196, 8),
               boxColor: const Color.fromARGB(255, 250, 250, 250)),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           _singleRowButton(
@@ -270,19 +270,19 @@ class RightSideWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
           height: 35,
           width: 35,
           decoration: BoxDecoration(
               color: boxColor,
-              borderRadius: BorderRadius.all(Radius.circular(10))),
+              borderRadius: const BorderRadius.all(Radius.circular(10))),
           child: Icon(
             icon,
             size: 20,
             color: iconColor,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Column(
@@ -290,7 +290,7 @@ class RightSideWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
             Text(
               description,

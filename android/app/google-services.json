@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1077579732943",
+    "project_id": "yatra-ad",
+    "storage_bucket": "yatra-ad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077579732943:android:15edcc5ad6ea5864c124ba",
+        "android_client_info": {
+          "package_name": "com.example.dash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi2GNwZ3ROfiyx20Kz-oscOvN2RMu677c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

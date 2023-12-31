@@ -1,13 +1,12 @@
-import 'package:dash/repo/fake_repo.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-
 import 'widgets/drawer_mobile.dart';
 
 class MobileScreen extends StatelessWidget {
-  final _data = FakeRepository.data;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  MobileScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +14,16 @@ class MobileScreen extends StatelessWidget {
       builder: (_, sizingInformation) {
         return Scaffold(
           key: scaffoldKey,
-          drawer: DrawerMobile(),
+          drawer: const DrawerMobile(),
           appBar: AppBar(
             leading: GestureDetector(
               onTap: () {
                 scaffoldKey.currentState?.openDrawer();
               },
-              child: Icon(Icons.menu),
+              child: const Icon(Icons.menu),
             ),
-            title: Text("Dashboard"),
-            actions: [
+            title: const Text("Dashboard"),
+            actions: const [
               Icon(Icons.more_vert),
             ],
           ),
@@ -32,8 +31,22 @@ class MobileScreen extends StatelessWidget {
             child: Column(
               children: [
                 _upgradeToProWidget(),
-                _row2by2Widget(sizingInformation),
-                _gridListItems(),
+                FutureBuilder(
+                  // Fetch data from Firestore here
+                  future: fetchData(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return CircularProgressIndicator();
+                    } else if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    } else {
+                      return _row2by2Widget(
+                        sizingInformation,
+                        snapshot.data,
+                      );
+                    }
+                  },
+                ),
               ],
             ),
           ),
@@ -44,17 +57,18 @@ class MobileScreen extends StatelessWidget {
 
   Widget _upgradeToProWidget() {
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 20),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-          color: Colors.indigo),
+      margin: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 20),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(8),
+        ),
+        color: Colors.indigo,
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -70,7 +84,7 @@ class MobileScreen extends StatelessWidget {
               ),
             ],
           ),
-          Container(
+          SizedBox(
             height: 50,
             width: 50,
             child: Image.asset("assets/pro.png"),
@@ -80,128 +94,10 @@ class MobileScreen extends StatelessWidget {
     );
   }
 
-  Widget _gridListItems() {
+  Widget _row2by2Widget(
+      SizingInformation sizingInformation, Map<String, dynamic>? data) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
-      child: GridView.builder(
-        shrinkWrap: true,
-        itemCount: _data.length,
-        physics: ScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 0.85),
-        itemBuilder: (context, index) {
-          return Container(
-            margin: EdgeInsets.only(right: 8, top: 8, bottom: 8, left: 4),
-            padding: EdgeInsets.symmetric(horizontal: 28, vertical: 18),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(8)),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(.2),
-                  blurRadius: 2,
-                  offset: Offset(0.5, 0.5),
-                  spreadRadius: 2,
-                ),
-              ],
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _data[index].serviceName,
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Date",
-                            style: TextStyle(
-                                color: Colors.grey[600], fontSize: 12)),
-                        Text(
-                          _data[index].date,
-                          style: TextStyle(fontSize: 12),
-                        )
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("Time",
-                            style: TextStyle(
-                                color: Colors.grey[600], fontSize: 12)),
-                        Text(
-                          _data[index].time,
-                          style: TextStyle(fontSize: 12),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 8,
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Handle "Accept Booking" button press
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green, // Set button color
-                        textStyle: TextStyle(
-                            fontSize: 16,
-                            color: Colors.white), // Set text style
-                      ),
-                      child: Text("Accept Booking"),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          // Handle "Decline" button press
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              Colors.red, // Set button color for Decline
-                          textStyle: TextStyle(
-                              fontSize: 16,
-                              color:
-                                  Colors.white), // Set text style for Decline
-                        ),
-                        child: Text("Decline"),
-                      ),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _row2by2Widget(SizingInformation sizingInformation) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -211,25 +107,42 @@ class MobileScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: _singleItemQuickStats(
-                    title: "Total Bookings",
-                    value: "0",
-                    width: sizingInformation.screenSize.width / 2.6,
-                    icon: Icons.book_online,
-                    iconColor: Colors.black),
+                  title: "Total Bookings",
+                  value: data?['totalBookings'] ?? '0',
+                  width: sizingInformation.screenSize.width / 2.6,
+                  icon: Icons.book_online,
+                  iconColor: Colors.black,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: _singleItemQuickStats(
-                    title: "Pending Bookings",
-                    value: "0",
-                    icon: Icons.pending_actions,
-                    iconColor: Colors.black,
-                    width: sizingInformation.screenSize.width / 2.6,
-                    textColor: Colors.red),
+                  title: "Pending Bookings",
+                  value: data?['pendingBookings'] ?? '0',
+                  icon: Icons.pending_actions,
+                  iconColor: Colors.black,
+                  width: sizingInformation.screenSize.width / 2.6,
+                  textColor: Colors.red,
+                ),
               ),
             ],
           ),
-          SizedBox(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _singleItemQuickStats(
+                  title: "My Bookings",
+                  value: data?['myBookings'] ?? '0',
+                  width: sizingInformation.screenSize.width / 2.6,
+                  icon: Icons.book_online,
+                  iconColor: Colors.black,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(
             height: 8,
           ),
         ],
@@ -237,26 +150,28 @@ class MobileScreen extends StatelessWidget {
     );
   }
 
-  Widget _singleItemQuickStats(
-      {required String title,
-      Color textColor = Colors.black,
-      required String value,
-      required IconData icon,
-      required double width,
-      required Color iconColor}) {
+  Widget _singleItemQuickStats({
+    required String title,
+    Color textColor = Colors.black,
+    required String value,
+    required IconData icon,
+    required double width,
+    required Color iconColor,
+  }) {
     return Container(
       width: width,
       height: 110,
-      padding: EdgeInsets.symmetric(horizontal: 28, vertical: 18),
+      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         boxShadow: [
           BoxShadow(
-              color: Colors.black.withOpacity(.2),
-              spreadRadius: 2,
-              offset: Offset(0.5, 0.5),
-              blurRadius: 2),
+            color: Colors.black.withOpacity(.2),
+            spreadRadius: 2,
+            offset: const Offset(0.5, 0.5),
+            blurRadius: 2,
+          ),
         ],
       ),
       child: Column(
@@ -266,13 +181,13 @@ class MobileScreen extends StatelessWidget {
             title,
             style: TextStyle(color: textColor, fontSize: 14),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           icon == null
               ? Text(
                   value,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 20,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -282,7 +197,7 @@ class MobileScreen extends StatelessWidget {
                   children: [
                     Text(
                       value,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -297,5 +212,16 @@ class MobileScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<Map<String, dynamic>> fetchData() async {
+    DocumentSnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+        .instance
+        .collection('your_collection')
+        .doc('your_document_id')
+        .get();
+    //replace 'your_collection' with the actual name of your Firestore collection and 'your_document_id' with the ID of the document containing the data.
+
+    return snapshot.data() ?? {};
   }
 }

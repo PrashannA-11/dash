@@ -5,15 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         if (sizingInformation.isDesktop) {
-          return DesktopScreen();
+          return const DesktopScreen();
         }
         if (sizingInformation.isTablet) {
-          return TabletScreen();
+          return const TabletScreen();
         }
         return MobileScreen();
       },

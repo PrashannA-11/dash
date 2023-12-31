@@ -5,17 +5,19 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 
 class DesktopScreen extends StatelessWidget {
+  const DesktopScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(builder: (_, sizingInformation) {
       return Scaffold(
         body: Row(
           children: [
-            WebVerticalNavWidget(),
+            const WebVerticalNavWidget(),
             BodyContentWidget(
                 sizingInformation: sizingInformation,
-                key: Key('body_content_widget')),
-            RightSideWidget()
+                key: const Key('body_content_widget')),
+            const RightSideWidget()
           ],
         ),
       );

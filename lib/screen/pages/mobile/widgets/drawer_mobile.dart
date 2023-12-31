@@ -1,8 +1,10 @@
 import 'package:dash/screen/pages/mobile/mobile_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dash/screen/pages/mobile/widgets/add_hotel.dart';
 import 'package:flutter/material.dart';
 
 class DrawerMobile extends StatelessWidget {
+  const DrawerMobile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -11,16 +13,16 @@ class DrawerMobile extends StatelessWidget {
         BoxShadow(
           color: Colors.black.withOpacity(.2),
           blurRadius: 2,
-          offset: Offset(0.5, 0.0),
+          offset: const Offset(0.5, 0.0),
           spreadRadius: 2,
         ),
       ]),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Container(
+          SizedBox(
             width: 80,
             height: 80,
             child: Image.asset("assets/logo.png"),
@@ -29,24 +31,20 @@ class DrawerMobile extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                    width: 40,
-                    height: 40,
-                    child: Image.asset("assets/profile.png")),
-                Text(
-                  "Prashanna!",
+                const Text(
+                  " Hey Prashanna!",
                   style: TextStyle(fontSize: 18),
                 ),
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Divider(
+          const Divider(
             thickness: 0.50,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           //_singleButton(icon: Icons.widgets, title: 'Main'),
@@ -61,24 +59,24 @@ class DrawerMobile extends StatelessWidget {
             },
           ),
 
-          Divider(
+          const Divider(
             thickness: 0.50,
           ),
           _singleButton(
             icon: Icons.add_a_photo,
             title: "Add your hotel",
             onTap: () {
-              //Navigator.push(
-              // context,
-              //MaterialPageRoute(builder: (context) => AddHotel()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const AddHotel()),
+              );
             },
           ),
-          Divider(
+          const Divider(
             thickness: 0.50,
           ),
           _singleButton(icon: Icons.settings, title: "Settings"),
-          Divider(
+          const Divider(
             thickness: 0.50,
           ),
           _singleButton(icon: Icons.exit_to_app, title: "Exit"),
@@ -92,7 +90,7 @@ class DrawerMobile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 8),
+        margin: const EdgeInsets.symmetric(horizontal: 8),
         child: Row(
           children: [Icon(icon), Text(title)],
         ),

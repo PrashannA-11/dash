@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WebVerticalNavWidget extends StatefulWidget {
+  const WebVerticalNavWidget({super.key});
+
   @override
   _WebVerticalNavWidgetState createState() => _WebVerticalNavWidgetState();
 }
@@ -12,7 +13,7 @@ class _WebVerticalNavWidgetState extends State<WebVerticalNavWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25),
+      padding: const EdgeInsets.symmetric(vertical: 25),
       width: 70,
       height: MediaQuery.of(context).size.height,
       decoration: BoxDecoration(
@@ -21,7 +22,7 @@ class _WebVerticalNavWidgetState extends State<WebVerticalNavWidget> {
           BoxShadow(
               color: Colors.black.withOpacity(.2),
               blurRadius: 2,
-              offset: Offset(0.5, 0.0),
+              offset: const Offset(0.5, 0.0),
               spreadRadius: 2)
         ],
       ),
@@ -37,7 +38,7 @@ class _WebVerticalNavWidgetState extends State<WebVerticalNavWidget> {
   }
 
   Widget _logoWidget() {
-    return Container(
+    return SizedBox(
       width: 45,
       height: 45,
       child: Image.asset("assets/logo.png"),
@@ -52,10 +53,6 @@ class _WebVerticalNavWidgetState extends State<WebVerticalNavWidget> {
       padding: const EdgeInsets.only(bottom: 35),
       child: Container(
         width: 70,
-        child: Icon(
-          icon,
-          color: iconColor,
-        ),
         decoration: BoxDecoration(
           border: Border(
             right: BorderSide(
@@ -63,6 +60,10 @@ class _WebVerticalNavWidgetState extends State<WebVerticalNavWidget> {
               color: borderColor,
             ),
           ),
+        ),
+        child: Icon(
+          icon,
+          color: iconColor,
         ),
       ),
     );
@@ -160,6 +161,6 @@ class _WebVerticalNavWidgetState extends State<WebVerticalNavWidget> {
   }
 
   Widget _logoutButton() {
-    return Icon(Icons.exit_to_app);
+    return const Icon(Icons.exit_to_app);
   }
 }

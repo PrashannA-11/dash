@@ -12,11 +12,11 @@ class BodyContentWidget extends StatefulWidget {
 }
 
 class _BodyContentWidgetState extends State<BodyContentWidget> {
-  int _rowCurrentBtnIndex = 0;
+  final int _rowCurrentBtnIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         width: widget.sizingInformation.screenSize.width / 1.4,
         child: Column(children: [
           _headerWidget(),
@@ -25,12 +25,12 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
 
   _headerWidget() {
     return Container(
-      margin: EdgeInsets.only(bottom: 20),
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      margin: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
+          const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
@@ -44,14 +44,14 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
             ],
           ),
           Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: const BoxDecoration(
                 color: Colors.indigo,
                 borderRadius: BorderRadius.all(
                   Radius.circular(8),
                 ),
               ),
-              child: Text(
+              child: const Text(
                 "Customise Blocks",
                 style: TextStyle(color: Colors.white),
               ))
@@ -62,15 +62,15 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
 
   Widget _quickStatsWidget() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "Quick Stats",
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           widget.sizingInformation.screenSize.width / 1.4 <= 860
@@ -138,7 +138,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                 textColor: Colors.red),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         Row(
@@ -171,15 +171,15 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
       required Color iconColor}) {
     return Container(
       width: width,
-      padding: EdgeInsets.symmetric(horizontal: 28, vertical: 18),
+      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 18),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(8)),
+        borderRadius: const BorderRadius.all(Radius.circular(8)),
         boxShadow: [
           BoxShadow(
               color: Colors.black.withOpacity(.2),
               spreadRadius: 2,
-              offset: Offset(0.5, 0.5),
+              offset: const Offset(0.5, 0.5),
               blurRadius: 2),
         ],
       ),
@@ -190,13 +190,13 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
             title,
             style: TextStyle(color: textColor, fontSize: 18),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           icon == null
               ? Text(
                   value,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 24,
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
@@ -206,7 +206,7 @@ class _BodyContentWidgetState extends State<BodyContentWidget> {
                   children: [
                     Text(
                       value,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 28,
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
